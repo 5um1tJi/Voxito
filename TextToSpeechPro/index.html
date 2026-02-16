@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voxify - Premium Text to Voice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <div class="app-container">
+
+        <header>
+            <h1>🎙 Voxify</h1>
+            <button id="themeToggle" class="theme-btn">🌙</button>
+        </header>
+
+        <div class="card">
+
+            <!-- Text Area -->
+            <textarea 
+                id="textInput" 
+                placeholder="Type something magical here... ✨">
+            </textarea>
+
+            <div class="text-info">
+                <span id="charCount">0 Characters</span>
+                <button id="copyBtn">Copy</button>
+                <button id="downloadBtn">Download</button>
+            </div>
+
+            <!-- Voice Selection -->
+            <div class="control-group">
+                <label>Choose Voice</label>
+                <select id="voiceSelect"></select>
+            </div>
+
+            <!-- Speed -->
+            <div class="control-group">
+                <label>Speed: <span id="rateValue">1</span></label>
+                <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+            </div>
+
+            <!-- Pitch -->
+            <div class="control-group">
+                <label>Pitch: <span id="pitchValue">1</span></label>
+                <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
+            </div>
+
+            <!-- Volume -->
+            <div class="control-group">
+                <label>Volume: <span id="volumeValue">1</span></label>
+                <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button id="speakBtn" class="primary">Speak</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="resumeBtn">Resume</button>
+                <button id="stopBtn" class="danger">Stop</button>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Made with ❤️ using Web Speech API</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
