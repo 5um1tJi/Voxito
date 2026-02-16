@@ -12,13 +12,13 @@
     --text-color: #ffffff;
     --primary: #6366f1;
     --danger: #ef4444;
+    --success: #22c55e;
     --blur: blur(20px);
 }
 
-/* Light Mode */
 body.light {
     --bg-color: #f1f5f9;
-    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.85);
     --text-color: #0f172a;
 }
 
@@ -36,8 +36,8 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
-    overflow-x: hidden;
     transition: 0.3s ease;
+    overflow-x: hidden;
 }
 
 /* ===========================
@@ -62,22 +62,9 @@ body {
     animation: float 10s infinite alternate ease-in-out;
 }
 
-.blob:nth-child(1) {
-    top: -100px;
-    left: -100px;
-}
-
-.blob:nth-child(2) {
-    bottom: -100px;
-    right: -100px;
-    animation-delay: 2s;
-}
-
-.blob:nth-child(3) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 4s;
-}
+.blob:nth-child(1) { top: -100px; left: -100px; }
+.blob:nth-child(2) { bottom: -100px; right: -100px; animation-delay: 2s; }
+.blob:nth-child(3) { top: 50%; left: 50%; animation-delay: 4s; }
 
 @keyframes float {
     from { transform: translateY(0px) scale(1); }
@@ -85,10 +72,10 @@ body {
 }
 
 /* ===========================
-   App Layout
+   Layout
 =========================== */
 .app-container {
-    max-width: 700px;
+    max-width: 720px;
     margin: auto;
     padding: 40px 20px;
 }
@@ -97,7 +84,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
 }
 
 h1 {
@@ -105,17 +97,28 @@ h1 {
     font-weight: 700;
 }
 
-.theme-btn {
-    background: none;
+.mode-btn, .theme-btn {
     border: none;
-    font-size: 1.5rem;
+    padding: 8px 14px;
+    border-radius: 10px;
     cursor: pointer;
-    color: var(--text-color);
+    font-weight: 500;
     transition: 0.3s;
 }
 
-.theme-btn:hover {
-    transform: scale(1.2);
+.mode-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.theme-btn {
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.mode-btn:hover, .theme-btn:hover {
+    transform: scale(1.05);
 }
 
 /* ===========================
@@ -147,20 +150,34 @@ textarea {
     margin-bottom: 10px;
 }
 
+/* ===========================
+   Text Info Section
+=========================== */
 .text-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-.text-info button {
+.text-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.text-buttons button {
     background: var(--primary);
     border: none;
-    padding: 6px 12px;
+    padding: 6px 10px;
     border-radius: 8px;
     color: white;
     cursor: pointer;
     font-size: 12px;
+    transition: 0.3s;
+}
+
+.text-buttons button:hover {
+    transform: translateY(-2px);
 }
 
 /* ===========================
@@ -184,9 +201,21 @@ select, input[type="range"] {
     outline: none;
 }
 
+/* 🔥 FIX DROPDOWN BUG */
 select {
-    background: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.15);
     color: var(--text-color);
+}
+
+select option {
+    background-color: #1e293b;   /* dark visible background */
+    color: white;
+}
+
+/* Light mode fix */
+body.light select option {
+    background-color: white;
+    color: black;
 }
 
 /* ===========================
@@ -221,6 +250,50 @@ select {
 .button-group button:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===========================
+   Speech To Text
+=========================== */
+.recording-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.record-btn {
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    background: var(--danger);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.record-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Glowing Listening Indicator */
+.record-indicator {
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--danger);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* ===========================
+   Utilities
+=========================== */
+.hidden {
+    display: none;
 }
 
 /* ===========================
