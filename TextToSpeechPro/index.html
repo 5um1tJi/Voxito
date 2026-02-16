@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Voxify - Premium Text to Voice</title>
+    <title>Voxify Pro - Text & Voice Studio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -18,60 +18,79 @@
     <div class="app-container">
 
         <header>
-            <h1>🎙 Voxify</h1>
-            <button id="themeToggle" class="theme-btn">🌙</button>
+            <h1>🎙 Voxify Pro</h1>
+
+            <div class="header-buttons">
+                <button id="modeToggle" class="mode-btn">🗣 Text → Speech</button>
+                <button id="themeToggle" class="theme-btn">🌙</button>
+            </div>
         </header>
 
         <div class="card">
 
-            <!-- Text Area -->
+            <!-- TEXT AREA -->
             <textarea 
-                id="textInput" 
-                placeholder="Type something magical here... ✨">
-            </textarea>
+id="textInput" 
+placeholder="Type or speak something magical... ✨"></textarea>
 
+            <!-- TEXT INFO -->
             <div class="text-info">
                 <span id="charCount">0 Characters</span>
-                <button id="copyBtn">Copy</button>
-                <button id="downloadBtn">Download</button>
+                <div class="text-buttons">
+                    <button id="pasteBtn">Paste</button>
+                    <button id="copyBtn">Copy</button>
+                    <button id="downloadBtn">Download</button>
+                </div>
             </div>
 
-            <!-- Voice Selection -->
-            <div class="control-group">
-                <label>Choose Voice</label>
-                <select id="voiceSelect"></select>
+            <!-- VOICE CONTROLS (For Text → Speech Mode) -->
+            <div id="ttsControls">
+
+                <div class="control-group">
+                    <label>Choose Voice</label>
+                    <select id="voiceSelect"></select>
+                </div>
+
+                <div class="control-group">
+                    <label>Speed: <span id="rateValue">1</span></label>
+                    <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+                </div>
+
+                <div class="control-group">
+                    <label>Pitch: <span id="pitchValue">1</span></label>
+                    <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
+                </div>
+
+                <div class="control-group">
+                    <label>Volume: <span id="volumeValue">1</span></label>
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+                </div>
+
+                <div class="button-group">
+                    <button id="speakBtn" class="primary">Speak</button>
+                    <button id="pauseBtn">Pause</button>
+                    <button id="resumeBtn">Resume</button>
+                    <button id="stopBtn" class="danger">Stop</button>
+                </div>
+
             </div>
 
-            <!-- Speed -->
-            <div class="control-group">
-                <label>Speed: <span id="rateValue">1</span></label>
-                <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
-            </div>
+            <!-- SPEECH TO TEXT CONTROLS -->
+            <div id="sttControls" class="hidden">
 
-            <!-- Pitch -->
-            <div class="control-group">
-                <label>Pitch: <span id="pitchValue">1</span></label>
-                <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
-            </div>
+                <div class="recording-section">
+                    <button id="recordBtn" class="record-btn">🎤 Start Recording</button>
+                    <div id="recordIndicator" class="record-indicator hidden">
+                        🔴 Listening...
+                    </div>
+                </div>
 
-            <!-- Volume -->
-            <div class="control-group">
-                <label>Volume: <span id="volumeValue">1</span></label>
-                <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-            </div>
-
-            <!-- Buttons -->
-            <div class="button-group">
-                <button id="speakBtn" class="primary">Speak</button>
-                <button id="pauseBtn">Pause</button>
-                <button id="resumeBtn">Resume</button>
-                <button id="stopBtn" class="danger">Stop</button>
             </div>
 
         </div>
 
         <footer>
-            <p>Made with ❤️ using Web Speech API</p>
+            <p>Made by Sumit Mishra</p>
         </footer>
 
     </div>
